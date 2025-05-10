@@ -4,6 +4,8 @@ import Navigation from "./Navigation";
 import { contractAddr } from "../constants/contract";
 import contract from "../contracts/Uruk.json";
 import Providers from './Providers';
+import Background from './Background'; 
+import Footer from './Footer'; // Footer bileşeni import ediliyor
 
 interface AppState {
   provider: BrowserProvider | null;
@@ -73,9 +75,10 @@ export default function App({ children }: AppProps) {
 
   return (
     <Providers>
-      <div className="min-h-screen bg-white dark:bg-gray-900">
+      <Background /> {/* Arkaplan bileşenini burada ekliyoruz */}
+      <div className="min-h-screen bg-transparent flex flex-col">
         <Navigation active={active} setActive={setActive} />
-        <main className="container mx-auto px-4 py-8">
+        <main className="container mx-auto px-4 pt-20 pb-8 flex-grow"> {/* flex-grow ekleyerek ana içeriğin esnemesini sağlıyoruz */}
           {React.Children.map(children, child => {
             if (React.isValidElement(child)) {
               return React.cloneElement(child as React.ReactElement<ChildProps>, { 
@@ -87,6 +90,7 @@ export default function App({ children }: AppProps) {
             return child;
           })}
         </main>
+        <Footer /> {/* Footer bileşenini buraya ekliyoruz */}
       </div>
     </Providers>
   );

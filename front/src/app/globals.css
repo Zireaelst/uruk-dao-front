@@ -23,4 +23,136 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+
+/* Background efektleri için stiller */
+.stars-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  overflow: hidden;
+}
+
+.stars-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 230px 50px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 320px 100px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 400px 200px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 480px 150px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 580px 80px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 620px 120px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 720px 60px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 800px 200px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 900px 120px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1px 1px at 980px 80px, #ffffff, rgba(0,0,0,0));
+  background-size: 1000px 1000px;
+  background-repeat: repeat;
+  opacity: 0.3;
+  animation: stars-animation 100s linear infinite;
+}
+
+@keyframes stars-animation {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-1000px);
+  }
+}
+
+/* Navigasyon buton stilleri */
+.nav-button {
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 5px 15px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.07);
+  color: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  backdrop-filter: blur(4px);
+}
+
+.nav-button:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px) scale(0.97);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.active-nav-button {
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.3);
+  color: white;
+  box-shadow: 0 2px 6px rgba(79, 70, 229, 0.2);
+}
+
+.active-nav-button:hover {
+  background: rgba(99, 102, 241, 0.25);
+}
+
+/* Koyu tema için navigasyon buton stilleri */
+@media (prefers-color-scheme: dark) {
+  .nav-button {
+    background: rgba(30, 41, 59, 0.3);
+    color: rgba(226, 232, 240, 0.9);
+    border-color: rgba(30, 41, 59, 0.4);
+  }
+  
+  .nav-button:hover {
+    background: rgba(30, 41, 59, 0.4);
+    color: white;
+  }
+  
+  .active-nav-button {
+    background: rgba(79, 70, 229, 0.25);
+    border-color: rgba(99, 102, 241, 0.4);
+    color: rgba(239, 246, 255, 1);
+  }
+
+  .active-nav-button:hover {
+    background: rgba(79, 70, 229, 0.3);
+  }
+}
+
+/* Permanent Science bölümü için animasyonlar */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(20px, -20px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
 }
